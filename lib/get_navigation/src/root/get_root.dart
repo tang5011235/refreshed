@@ -48,6 +48,8 @@ class ConfigData {
   final Map<String, String?> parameters;
   final SnackBarQueue snackBarQueue = SnackBarQueue();
 
+  final bool limitSwipe;
+
   ConfigData({
     required this.routingCallback,
     required this.defaultTransition,
@@ -76,6 +78,7 @@ class ConfigData {
     required this.initialRoute,
     required this.customTransition,
     required this.home,
+    required this.limitSwipe,
     this.theme,
     this.darkTheme,
     this.themeMode,
@@ -133,6 +136,7 @@ class ConfigData {
     Duration? defaultDialogTransitionDuration,
     Routing? routing,
     Map<String, String?>? parameters,
+    bool? limitSwipe,
   }) {
     return ConfigData(
       routingCallback: routingCallback ?? this.routingCallback,
@@ -179,6 +183,7 @@ class ConfigData {
           defaultDialogTransitionCurve ?? this.defaultDialogTransitionCurve,
       defaultDialogTransitionDuration: defaultDialogTransitionDuration ??
           this.defaultDialogTransitionDuration,
+      limitSwipe: limitSwipe ?? this.limitSwipe,
       routing: routing ?? this.routing,
       parameters: parameters ?? this.parameters,
     );
@@ -229,6 +234,7 @@ class ConfigData {
         other.defaultDialogTransitionDuration ==
             defaultDialogTransitionDuration &&
         other.routing == routing &&
+        other.limitSwipe == limitSwipe &&
         mapEquals(other.parameters, parameters);
   }
 
@@ -283,8 +289,10 @@ class GetRoot extends StatefulWidget {
     required this.config,
     required this.child,
   });
+
   final ConfigData config;
   final Widget child;
+
   @override
   State<GetRoot> createState() => GetRootState();
 
@@ -315,6 +323,7 @@ class GetRoot extends StatefulWidget {
 
 class GetRootState extends State<GetRoot> with WidgetsBindingObserver {
   static GetRootState? _controller;
+
   static GetRootState get controller {
     if (_controller == null) {
       throw Exception(
@@ -391,6 +400,7 @@ class GetRootState extends State<GetRoot> with WidgetsBindingObserver {
                 GetObserver(config.routingCallback, config.routing),
                 ...config.navigatorObservers!
               ]),
+        limitSwipe: config.limitSwipe,
       );
       config = config.copyWith(routerDelegate: newDelegate);
     }
@@ -533,6 +543,7 @@ class GetRootState extends State<GetRoot> with WidgetsBindingObserver {
         showHashOnUrl: true,
         //debugLabel: 'Getx nested key: ${key.toString()}',
         pages: RouteDecoder.fromRoute(key).currentChildren ?? [],
+        limitSwipe: config.limitSwipe,
       ),
     );
     return keys[key];

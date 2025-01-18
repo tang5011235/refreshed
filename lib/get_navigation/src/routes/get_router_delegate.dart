@@ -21,6 +21,7 @@ class GetDelegate extends RouterDelegate<RouteDecoder>
     PreventDuplicateHandlingMode preventDuplicateHandlingMode =
         PreventDuplicateHandlingMode.reorderRoutes,
     GlobalKey<NavigatorState>? navigatorKey,
+    bool limitSwipe = false,
   }) {
     return GetDelegate(
       notFoundRoute: notFoundRoute,
@@ -30,6 +31,7 @@ class GetDelegate extends RouterDelegate<RouteDecoder>
       preventDuplicateHandlingMode: preventDuplicateHandlingMode,
       pages: pages,
       navigatorKey: navigatorKey,
+      limitSwipe: limitSwipe,
     );
   }
 
@@ -78,6 +80,8 @@ class GetDelegate extends RouterDelegate<RouteDecoder>
 
   final String? restorationScopeId;
 
+  final bool limitSwipe;
+
   GetDelegate({
     GetPage? notFoundRoute,
     this.navigatorObservers,
@@ -88,6 +92,7 @@ class GetDelegate extends RouterDelegate<RouteDecoder>
     this.pickPagesForRootNavigator,
     this.restorationScopeId,
     bool showHashOnUrl = false,
+    required this.limitSwipe,
     GlobalKey<NavigatorState>? navigatorKey,
     required List<GetPage> pages,
   })  : navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>(),

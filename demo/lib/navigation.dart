@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/details/:id', page: () => DetailsScreen()),
       ],
       defaultTransition: Transition.noTransition,
+      limitSwipe: true,
     );
   }
 }
@@ -32,7 +33,6 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          spacing: 16,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(

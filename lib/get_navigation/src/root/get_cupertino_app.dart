@@ -53,6 +53,7 @@ class GetCupertinoApp extends StatelessWidget {
   final SmartManagement smartManagement;
   final BindingsInterface? initialBinding;
   final Duration? transitionDuration;
+  final bool limitSwipe;
   final bool? defaultGlobalState;
   final List<GetPage>? getPages;
   final GetPage? unknownRoute;
@@ -116,6 +117,7 @@ class GetCupertinoApp extends StatelessWidget {
     this.logWriterCallback,
     this.popGesture,
     this.transitionDuration,
+    this.limitSwipe = false,
     this.defaultGlobalState,
     this.highContrastTheme,
     this.highContrastDarkTheme,
@@ -158,6 +160,7 @@ class GetCupertinoApp extends StatelessWidget {
     this.customTransition,
     this.translationsKeys,
     this.translations,
+    this.limitSwipe = false,
     this.textDirection,
     this.fallbackLocale,
     this.routingCallback,
@@ -213,6 +216,7 @@ class GetCupertinoApp extends StatelessWidget {
         smartManagement: smartManagement,
         transitionDuration: transitionDuration,
         translations: translations,
+        limitSwipe: limitSwipe,
         translationsKeys: translationsKeys,
         unknownRoute: unknownRoute,
       ),

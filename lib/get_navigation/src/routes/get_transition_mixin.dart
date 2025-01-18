@@ -260,6 +260,8 @@ class GetBackGestureController<T> {
 mixin GetPageRouteTransitionMixin<T> on PageRoute<T> {
   ValueNotifier<String?>? _previousTitle;
 
+  bool limitedSwipe = false;
+
   @override
   Color? get barrierColor => null;
 
@@ -352,6 +354,7 @@ Cannot read the previousTitle for a route that has not yet been installed""",
         animation,
         secondaryAnimation,
         child,
+        limitedSwipe: limitedSwipe,
       );
 
   @override

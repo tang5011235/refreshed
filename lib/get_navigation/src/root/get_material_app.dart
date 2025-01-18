@@ -44,6 +44,7 @@ class GetMaterialApp extends StatelessWidget {
   final bool debugShowMaterialGrid;
   final ValueChanged<Routing?>? routingCallback;
   final Transition? defaultTransition;
+  final bool limitSwipe;
   final bool? opaqueRoute;
   final VoidCallback? onInit;
   final VoidCallback? onReady;
@@ -63,6 +64,7 @@ class GetMaterialApp extends StatelessWidget {
   final RouterConfig<Object>? routerConfig;
   final BackButtonDispatcher? backButtonDispatcher;
   final bool useInheritedMediaQuery;
+
 
   const GetMaterialApp({
     super.key,
@@ -103,6 +105,7 @@ class GetMaterialApp extends StatelessWidget {
     this.customTransition,
     this.translationsKeys,
     this.translations,
+    this.limitSwipe = false,
     this.onInit,
     this.onReady,
     this.onDispose,
@@ -162,6 +165,7 @@ class GetMaterialApp extends StatelessWidget {
     this.customTransition,
     this.translationsKeys,
     this.translations,
+    this.limitSwipe = false,
     this.textDirection,
     this.fallbackLocale,
     this.routingCallback,
@@ -218,6 +222,7 @@ class GetMaterialApp extends StatelessWidget {
         transitionDuration: transitionDuration,
         translations: translations,
         translationsKeys: translationsKeys,
+        limitSwipe: limitSwipe,
         unknownRoute: unknownRoute,
         theme: theme,
         darkTheme: darkTheme,

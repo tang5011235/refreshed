@@ -427,7 +427,7 @@ extension ExtensionSnackbar on GetInterface {
         margin: margin ?? const EdgeInsets.symmetric(horizontal: 10),
         duration: duration,
         barBlur: barBlur ?? 7.0,
-        backgroundColor: backgroundColor ?? Colors.grey.withValues(alpha: 0.2),
+        backgroundColor: backgroundColor ?? Colors.grey.withAlpha(51),
         icon: icon,
         shouldIconPulse: shouldIconPulse ?? true,
         maxWidth: maxWidth,
@@ -1216,6 +1216,7 @@ extension GetNavigationExt on GetInterface {
   ConfigData get _getxController => GetRootState.controller.config;
 
   bool get defaultPopGesture => _getxController.defaultPopGesture;
+
   bool get defaultOpaqueRoute => _getxController.defaultOpaqueRoute;
 
   Transition? get defaultTransition => _getxController.defaultTransition;
